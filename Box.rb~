@@ -1,0 +1,33 @@
+class Box
+ @@count = 0
+ def initialize w,h
+  @width , @height = w ,h
+  @@count += 1
+ end
+ def area
+  return @width*@height
+ end
+ def getheight 
+  return @height
+ end
+ def getwidth
+  return @width
+ end
+ def self.getcount
+  return @@count
+ end
+ def to_s
+  return "(w:#@width,h:#@height)" #string represntaion of point
+  end
+  private :height , :@width
+end
+
+box1 = Box.new 1,2
+a = box1.area
+#puts "Height of box #{box1.height}"
+puts "Area of box : #{a}"
+puts "Height of box : #{box1.getheight}"
+box2 = Box.new 1,4
+count = Box.getcount
+puts "Total number of box : #{count}"
+puts "Strig represntaion : #{box1}"
