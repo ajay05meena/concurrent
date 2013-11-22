@@ -1,0 +1,29 @@
+#define a subclass
+require './Box'
+class BigBox < Box
+ Class_name = "BIGBOX"
+ def area
+  puts "class of box #{self.name}"
+  puts "bigbox"
+  @width*@height
+ end
+ def setheight h
+  @height = h
+ end
+end
+
+box = BigBox.new(10,20)
+box.freeze
+if(box.frozen? )
+ puts "Box object is frozen object"
+else
+ puts "Box object is normal object"
+end
+
+#box.setheight 10
+puts "big box area #{box.area}"
+count = BigBox.getcount
+puts "#{count}"
+puts BigBox::Class_name
+
+
