@@ -34,6 +34,7 @@ public class Threadpoolexample  implements Runnable {
 		}
 		executor.shutdown();
 		while(!executor.isTerminated()){
+			System.out.println("still thread running");
 			
 		}
 		
