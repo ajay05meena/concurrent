@@ -21,9 +21,18 @@ main
 main  Ending Time 25/11/13 10:13 PM
 
  */
+//When boolean var is static output is
+/*
+ main  Starting Time 25/11/13 10:16 PM
+main
+main  Ending Time 25/11/13 10:16 PM
+main  Starting Time 25/11/13 10:16 PM
+main  Ending Time 25/11/13 10:16 PM
+
+ */
 public class Threadcontrol implements Runnable{
 	int n ;
-	volatile boolean flag ;
+	static boolean flag  ;
 	
 	SimpleDateFormat df = new SimpleDateFormat();
 	public Threadcontrol(int n , boolean flag){
