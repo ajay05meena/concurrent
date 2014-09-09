@@ -5,11 +5,11 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 	@Override
 	public synchronized T dequeue() {
 				try {
-					if(total == 0){
+					if(isEmpty()){
 					System.out.println("waiting for producer to add element" );
 					wait();
 					}
-					if(total==limit){
+					if(isFull()){
 						notifyAll();
 					}
 					T ele = first.ele;
@@ -30,11 +30,11 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 			return this;
 		}
 		try{
-			while(total==limit){
+			while(isFull()){
 				System.out.println("waiting for consumer to eat element" );
 				wait();
 			}
-			if(total==0){
+			if(isEmpty()){
 				notifyAll();
 			}
 			Node<T> current = last;
@@ -50,6 +50,12 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 		}
 		return this;
 		}
-		
+	private boolean isEmpty(){
+		return total==0;
+	}
+	
+	private boolean idFull(){
+		return total==limit;
+	}
 
 }
