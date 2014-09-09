@@ -4,8 +4,9 @@ package akm.util;
 
 
 public class MyQueue<T> implements Queue<T> {
-	private int total; //total number of elements in queue
-	private Node<T> first,last;
+	protected int total; //total number of elements in queue
+	protected Node<T> first;
+	protected Node<T> last;
 	
 	@Override
 	public T dequeue() {
