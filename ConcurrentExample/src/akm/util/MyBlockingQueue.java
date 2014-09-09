@@ -1,7 +1,7 @@
 package akm.util;
 
 public class MyBlockingQueue<T> extends MyQueue<T>{
-	int limit = 100;
+	final int limit = 100;
 	@Override
 	public synchronized T dequeue() {
 				try {
@@ -9,14 +9,12 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 					System.out.println("waiting for producer to add element" );
 					wait();
 					}
-					if(isFull()){
-						notifyAll();
-					}
 					T ele = first.ele;
 					first = first.next;
 					if(--total==0){
 						last = null;
 					}
+					notifyAll();
 					return ele;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -34,9 +32,8 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 				System.out.println("waiting for consumer to eat element" );
 				wait();
 			}
-			if(isEmpty()){
 				notifyAll();
-			}
+			
 			Node<T> current = last;
 			last = new Node<T>();
 			last.ele=ele;
