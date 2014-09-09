@@ -26,6 +26,9 @@ public class MyBlockingQueue<T> extends MyQueue<T>{
 		
 	@Override
 	public synchronized Queue<T> enqueue(T ele) {
+		if(ele==null){
+			return this;
+		}
 		try{
 			while(total==limit){
 				System.out.println("waiting for consumer to eat element" );
